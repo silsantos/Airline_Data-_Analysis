@@ -46,7 +46,7 @@ EOF
 
 function total_delay_by_company() {
   FILTERED_DATA=$(awk -F',' 'NF==29 && NR>1' $1 | grep -w $COMPANY)
-  DELAYS_PER_FLIGHT=$(echo "$FILTERED_DATA" | awk -F',' '{print($14+$15)}' | grep -v -)
+  DELAYS_PER_FLIGHT=$(echo "$FILTERED_DATA" | awk -F',' '{print($15+$16)}' | grep -v -)
   TOTAL_DELAY=$(echo "$DELAYS_PER_FLIGHT" | paste -s -d+ | bc )
   cat << EOF
 
